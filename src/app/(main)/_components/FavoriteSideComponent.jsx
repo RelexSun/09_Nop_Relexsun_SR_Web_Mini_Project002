@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import Link from "next/link";
 import { updateWorkspaceAction } from "@/actions/workspaceAction";
+import { toast } from "sonner";
 
 const FavoriteSideComponent = ({ workspace }) => {
   const [id, setId] = useState();
@@ -23,6 +24,7 @@ const FavoriteSideComponent = ({ workspace }) => {
 
   const onSubmit = async (data) => {
     const res = await updateWorkspaceAction(id, data);
+    if (res?.status === "OK") toast("Update successfully!!!");
   };
 
   const handleColor = () => {

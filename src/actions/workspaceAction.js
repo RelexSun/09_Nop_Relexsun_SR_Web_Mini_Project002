@@ -50,9 +50,8 @@ export const updateFavoriteAction = async (id, favorite) => {
 export const updateWorkspaceAction = async (id, input) => {
   try {
     const res = await updateWorkspaceService(id, input);
-    console.log(res);
-    const data = await res.json();
-    return data;
+    revalidateTag("updateWorkspace");
+    return res;
   } catch (e) {
     console.log("Error: ", e);
   }

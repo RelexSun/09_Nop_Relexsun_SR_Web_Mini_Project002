@@ -56,10 +56,11 @@ export const updateWorkspaceService = async (id, input) => {
     const res = await fetch(`${baseWorkspaceUrl}/${id}`, {
       method: "PUT",
       headers: header,
-      body: input,
+      body: JSON.stringify(input),
       next: { tags: "updateWorkspace" },
     });
     const data = await res.json();
+    console.log("service", data);
     return data;
   } catch (e) {
     console.log("Error: ", e);
